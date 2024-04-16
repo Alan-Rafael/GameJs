@@ -47,24 +47,18 @@
     px2 = 0; numof = 256; py2=223
 
     function zerar(){
-        PosicaoX = 20; PosicaoY = 520;
-        posIniX =0; corteIniX = 0;
-        corteIniY = 0; larguraCorteX = 86
-        alturaCortey = 179; numSprite = 0;
-        numSpries = 6; pula = false
-        limite = false; arvoreE = 640
-        arvoreA = 520; fogueteE = 800
-        fogueteA = 520; colisao = false
-        comecarJogo = false; lixoE = 780
-        lixoA= 520; inicioDoJogo = true
-        score = 0; updateScore(score)
+        PosicaoX = 20; PosicaoY = 520; posIniX =0;
+        corteIniX = 0; corteIniY = 0; larguraCorteX = 86
+        alturaCortey = 179; numSprite = 0; numSpries = 6;
+        pula = false; limite = false; arvoreE = 640
+        arvoreA = 520; fogueteE = 800; fogueteA = 520; colisao = false;
+        comecarJogo = false; lixoE = 780; lixoA= 520;
+        inicioDoJogo = true; score = 0; updateScore(score);
     }
     function colisaoX(){
         enterFinal()
         PosicaoX -= 5
-        if(PosicaoX <=0){
-            PosicaoX = 0
-        }
+        if(PosicaoX <=0){ PosicaoX = 0}
         ctx.clearRect(0,0, canvas.width, canvas.height)
         ctx.drawImage(city,0,0,canvas.width, canvas.height);
         ctx.drawImage(arvo, arvoreE, arvoreA, 80,80)
@@ -173,10 +167,9 @@
         }
     }
 
-    function run(){   //CONTROLE DA TELA MOSTRADA
+    function run(){
         numSprite++;
         if(numSprite>numSpries){numSprite = 1;}
-
         switch(numSprite){
             case 1:
                 posIniX = 0; larguraCorteX = 86
@@ -205,7 +198,6 @@
         s:{ pressed: false},
         a: {pressed: false}
     }
-
     function ControlJump(){
         if(keys.s.pressed){
             pula = true
@@ -222,32 +214,27 @@
             colisao = false; inicioDoJogo = false
         }
     }
-
     window.addEventListener('keydown', (e)=>{
         let key = e.key
         if(key === " "||key === "ArrowUp"){
             keys.s.pressed = true;
         }
     })
-
     window.addEventListener("keydown", (e)=>{
         let key = e.key
         if(key === "Enter"){
             keys.a.pressed = true;
         }
     })
-
     window.addEventListener("keyup", (e)=>{
         let key = e.key
         if(key === "Enter"){
             keys.a.pressed = false;
         }
     })
-
     window.addEventListener("click", startGame)
     function startGame(){
         comecarJogo = true
         ctx.clearRect(0,0,canvas.width, canvas.height)
         updateScore(0);
-
     }
