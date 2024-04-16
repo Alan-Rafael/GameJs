@@ -2,10 +2,6 @@
     let canvas = document.querySelector("canvas");
     let ctx = canvas.getContext("2d");
 
-    const gravidade = 2.9;
-
-    let score = 0
-
     let morreu = new Image()
     morreu.src = ("images/morreu.png")
 
@@ -43,12 +39,12 @@
     let fogueteA = 520, colisao = false;
     let comecarJogo = false;
     let pxLogin =0; let pyLogin =3;
-    let contagem = 0; let numLogin = 2;
-    let LargLogin = logintela.width
-    px2 = 0; numof = 256; py2=223
-    let lixoE = 780
-    let lixoA= 520
+    let contagem = 0;
+    let lixoE = 780; let lixoA= 520
+    const gravidade = 2.9; let score = 0
+
     inicioDoJogo = true; let coletou
+    px2 = 0; numof = 256; py2=223
 
     function zerar(){
         PosicaoX = 20; PosicaoY = 520;
@@ -115,21 +111,17 @@
     function arvore(){
         verifyIfLose()
         coletar()
-        if(colisao == false && score <10){
-         arvoreE-=gravidade*10
-         lixoE -= gravidade*10
-        }else if(colisao == false && score>=5){
-            arvoreE -=gravidade*14
-            lixoE -= gravidade*14
-        }else if(colisao == false && score >=10){
-            arvoreE -=gravidade*16
-            lixoE -= gravidade*10
+        if(colisao === false && score <10){
+         arvoreE-=gravidade*10; lixoE -= gravidade*10
+        }else if(colisao === false && score>=5){
+            arvoreE -=gravidade*14; lixoE -= gravidade*14
+        }else if(colisao === false && score >=10){
+            arvoreE -=gravidade*16; lixoE -= gravidade*10
         }
-        if(arvoreE <= -200 ){
-            arvoreE=610
-        }
+        if(arvoreE <= -200 ){arvoreE=610}
         if(lixoE <= - 300){
-           lixoE =  Math.floor(Math.random() * (1000 - 10 + 1)) + 610;
+           lixoE =  Math.
+           floor(Math.random() * (1000 - 10 + 1)) + 610;
         }
         if(coletou){
             console.log("desnehou")
@@ -141,7 +133,6 @@
 
     function verifyIfLose(){
         if(arvoreE <= 90 && arvoreE >= 10 && !pula ){
-            console.log("colidiu")
             colisao = true
         }
     }
@@ -156,18 +147,16 @@
     }
 
     function Jump(){
-        if(limite == false && PosicaoY >=330){
+        if(limite === false && PosicaoY >=330){
             PosicaoY-=15*gravidade;
             ctx.clearRect(0,0, canvas.width, canvas.height)
             fundo();
             ctx.drawImage(NovoPulo,0,0,110,206, PosicaoX, PosicaoY, 80,80)
 
-            if(PosicaoY <= 330){
-                limite = true;
-            }
+            if(PosicaoY <= 330){limite = true;}
         }
 
-        else if(PosicaoY<= 520 && limite == true){
+        else if(PosicaoY<= 520 && limite === true){
             PosicaoY+=15*gravidade
             ctx.clearRect(0,0, canvas.width, canvas.height)
             fundo();
@@ -186,9 +175,8 @@
 
     function run(){   //CONTROLE DA TELA MOSTRADA
         numSprite++;
-        if(numSprite>numSpries){
-            numSprite = 1;
-        }
+        if(numSprite>numSpries){numSprite = 1;}
+
         switch(numSprite){
             case 1:
                 posIniX = 0; larguraCorteX = 86
@@ -208,19 +196,14 @@
             case 6:
                 posIniX = 545;larguraCorteX = 149
             break;
-
         }
         ctx.clearRect(0,0,canvas.width,canvas.height); fundo();
         ctx.drawImage(MegaMan, posIniX, 0,larguraCorteX, alturaCortey, PosicaoX,PosicaoY,80, 80 )
     }
 
     const keys = {
-        s:{
-            pressed: false
-        },
-        a: {
-            pressed: false
-        }
+        s:{ pressed: false},
+        a: {pressed: false}
     }
 
     function ControlJump(){
@@ -235,10 +218,8 @@
     }
     function enterFinal(){
         if(keys.a.pressed){
-            zerar()
-            comecarJogo = true
-            colisao = false
-            inicioDoJogo = false
+            zerar(); comecarJogo = true
+            colisao = false; inicioDoJogo = false
         }
     }
 
