@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            width: 600px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .board {
+            z-index: 1;
+        }
+        .score {
+            position: absolute;
+            z-index: 2;
+            top: 32px;
+            font-size: 52px;
+            color: aliceblue;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="score" id="score"></div>
+    <audio src=""></audio>
+
+    <div class="board">
+        <canvas height="600" width="600" style="border: 1px solid black;"></canvas>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
